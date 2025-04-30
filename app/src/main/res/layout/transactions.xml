@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="911dp"
+        android:background="#000000"
+        android:orientation="vertical">
+
+        <!-- Title -->
+
+        <!-- Calendar Image Placeholder -->
+
+        <!-- Select Date Button -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="@string/transactions"
+            android:textColor="#FF69B4"
+            android:textSize="26sp" />
+
+        <ImageView
+            android:id="@+id/iv_calendar"
+            android:layout_width="261dp"
+            android:layout_height="258dp"
+            android:layout_gravity="center"
+            android:contentDescription="Calendar placeholder"
+            android:padding="16dp"
+            android:src="@drawable/calender" />
+
+        <Button
+            android:id="@+id/btn_select_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF69B4"
+            android:text="Select Date"
+            android:textColor="#FFFFFF" />
+
+        <!-- Sync Bank Button -->
+        <Button
+            android:id="@+id/btn_sync_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF69B4"
+            android:text="Sync Bank"
+            android:textColor="#FFFFFF" />
+
+        <!-- Scan Receipt Button -->
+        <Button
+            android:id="@+id/btn_scan_receipt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FF69B4"
+            android:text="Scan Receipt"
+            android:textColor="#FFFFFF" />
+
+        <!-- Transactions Date Header -->
+        <TextView
+            android:id="@+id/tv_date_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="Transactions for 19 March 2025"
+            android:textColor="#FFFDFD"
+            android:textSize="18sp" />
+
+        <!-- Transactions List -->
+        <LinearLayout
+            android:id="@+id/ll_transactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <!-- Transaction Row 1: Uber -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv_transaction_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Uber"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tv_price_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R 20,00"
+                    android:textColor="#FF69B4" />
+            </LinearLayout>
+
+            <!-- Transaction Row 2: Netflix -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv_transaction_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Netflix"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tv_price_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R 50,00"
+                    android:textColor="#FF69B4" />
+            </LinearLayout>
+
+            <!-- More Transactions here... -->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#222222"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

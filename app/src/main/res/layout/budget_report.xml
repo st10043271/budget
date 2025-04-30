@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Bottom Navigation Bar -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Budget Report"
+            android:textColor="#FF69B4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Income Section -->
+        <TextView
+            android:id="@+id/tv_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Income: R0.00"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <!-- Expenses Section -->
+        <TextView
+            android:id="@+id/tv_expenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Expenses: R0.00"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <!-- Savings Section -->
+        <TextView
+            android:id="@+id/tv_savings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Savings: R0.00"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <!-- Debt Planner Section -->
+        <TextView
+            android:id="@+id/tv_debt_planner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Debt Planner"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:gravity="center_horizontal" />
+
+        <!-- Progress Bar for Debt Repayment -->
+        <ProgressBar
+            android:id="@+id/debtProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:progress="30"
+            android:max="100"
+            android:progressTint="#FF69B4"
+            android:indeterminate="false"/>
+
+        <!-- Countdown Timer for Debt Repayment -->
+        <TextView
+            android:id="@+id/tv_debt_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time remaining: 10:00"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal" />
+
+        <!-- Placeholder Image for Budget Pie Chart -->
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="#222222"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"/>
+
+    <ImageView
+        android:id="@+id/iv_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pie"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="center" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
