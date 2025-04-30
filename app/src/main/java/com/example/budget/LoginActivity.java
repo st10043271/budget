@@ -7,51 +7,64 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.lifecycleScope;
+
+import com.example.budget.data.database.UserDatabase;
+import com.example.budget.data.dao.UserDao;
+import com.example.budget.data.entities.User;
+
+import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.launch;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText usernameInput, emailInput, passwordInput;
+    EditText usernameInput, passwordInput;
     Button loginButton, registerButton;
+
+    private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // Make sure this is correct
+        setContentView(R.layout.activity_login);
 
-        // Bind views
         usernameInput = findViewById(R.id.usernameInput);
-        emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         registerButton = findViewById(R.id.registerButton);
 
-        // Login button logic
+        // Initialize DAO
+        userDao = UserDatabase.getInstance(getApplicationContext()).userDao();
+
         loginButton.setOnClickListener(v -> {
-            String username = usernameInput.getText().toString().trim();
-            String email = emailInput.getText().toString().trim();
+            String email = usernameInput.getText().toString().trim();
             String password = passwordInput.getText().toString();
 
-            if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            } else {
-                // TEMP LOGIN VALIDATION – Replace this with real DB check
-                if (username.equals("testuser") && email.equals("test@example.com") && password.equals("password123")) {
-                    Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-
-                    // Redirect to HomeActivity
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish(); // Closes LoginActivity
-                } else {
-                    Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                }
+                return;
             }
+
+            // Use coroutine to call suspend Room function
+            lifecycleScope.launch(Dispatchers.IO) {
+                User user = userDao.login(email, password);
+
+                runOnUiThread(() -> {
+                    if (user != null) {
+                        Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            };
         });
 
-        // Redirect to RegistrationActivity
         registerButton.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
         });
     }
 }
