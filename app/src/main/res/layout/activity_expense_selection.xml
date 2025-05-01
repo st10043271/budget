@@ -1,180 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    android:padding="24dp">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <!-- Page Title -->
+        <!-- Logo at the top -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo"
+            android:contentDescription="App Logo"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Income Section -->
         <TextView
-            android:id="@+id/expenseSelectionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Your Expenses"
+            android:text="Monthly Income"
+            android:textColor="#FF69B4"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTextIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your income"
+            android:inputType="numberDecimal"
             android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            tools:ignore="HardcodedText" />
+            android:textColorHint="#FF69B4"
+            android:backgroundTint="#FF69B4"
+            android:layout_marginBottom="16dp" />
 
-        <!-- Fixed Expenses Section -->
-        <TextView
-            android:id="@+id/fixedExpensesLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fixed Expenses"
-            android:textColor="#FF4081"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Fixed Expenses List -->
+        <!-- Two-column Layout -->
         <LinearLayout
-            android:id="@+id/fixedExpensesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/expense_box"
-            android:padding="10dp">
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="24dp">
 
-            <CheckBox
-                android:id="@+id/rentCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rent"
-                android:textColor="#FFFFFF"/>
-
-            <CheckBox
-                android:id="@+id/utilityCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Utilities"
-                android:textColor="#FFFFFF"/>
-
-            <CheckBox
-                android:id="@+id/insuranceCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Insurance"
-                android:textColor="#FFFFFF"/>
-
-            <CheckBox
-                android:id="@+id/carPaymentCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Car Payment"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
-
-        <!-- Subscription Expenses Section -->
-        <TextView
-            android:id="@+id/subscriptionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subscription Expenses"
-            android:textColor="#FF4081"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Subscription Expenses List with Date Pickers -->
-        <LinearLayout
-            android:id="@+id/subscriptionContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/expense_box"
-            android:padding="10dp">
-
+            <!-- Fixed Expenses Column -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-                <CheckBox
-                    android:id="@+id/netflixCheckBox"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Netflix"
+                    android:text="Fixed Expenses"
+                    android:textColor="#FF69B4"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/editTextFixedLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Expense Name"
                     android:textColor="#FFFFFF"
-                    android:layout_weight="1"/>
+                    android:textColorHint="#FF69B4"
+                    android:backgroundTint="#FF69B4" />
+
+                <EditText
+                    android:id="@+id/editTextFixedAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount"
+                    android:inputType="numberDecimal"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FF69B4"
+                    android:backgroundTint="#FF69B4"
+                    android:layout_marginTop="4dp" />
 
                 <Button
-                    android:id="@+id/netflixDateButton"
+                    android:id="@+id/buttonAddFixedExpense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pick Date"
+                    android:text="Add"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF4081"/>
+                    android:backgroundTint="#FF69B4"
+                    android:layout_marginTop="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/fixedExpenseList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- Subscription Expenses Column -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-                <CheckBox
-                    android:id="@+id/spotifyCheckBox"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Spotify"
+                    android:text="Subscription Expenses"
+                    android:textColor="#FF69B4"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/editTextSubscriptionLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Subscription Name"
                     android:textColor="#FFFFFF"
-                    android:layout_weight="1"/>
+                    android:textColorHint="#FF69B4"
+                    android:backgroundTint="#FF69B4" />
+
+                <EditText
+                    android:id="@+id/editTextSubscriptionAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount"
+                    android:inputType="numberDecimal"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FF69B4"
+                    android:backgroundTint="#FF69B4"
+                    android:layout_marginTop="4dp" />
 
                 <Button
-                    android:id="@+id/spotifyDateButton"
+                    android:id="@+id/buttonAddSubscription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pick Date"
+                    android:text="Add"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF4081"/>
-            </LinearLayout>
+                    android:backgroundTint="#FF69B4"
+                    android:layout_marginTop="8dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
-
-                <CheckBox
-                    android:id="@+id/amazonCheckBox"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/subscriptionExpenseList"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Amazon Prime"
-                    android:textColor="#FFFFFF"
-                    android:layout_weight="1"/>
-
-                <Button
-                    android:id="@+id/amazonDateButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pick Date"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF4081"/>
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Continue Button -->
+        <!-- Preview of Savings -->
+        <TextView
+            android:id="@+id/textViewSavingsPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Savings: --"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Save / Continue Button -->
         <Button
-            android:id="@+id/continueButton"
+            android:id="@+id/buttonSaveAndContinue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Continue"
+            android:text="Save and Continue"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#FF4081"
-            android:layout_marginTop="24dp"/>
+            android:backgroundTint="#FF69B4"
+            android:layout_marginBottom="24dp" />
     </LinearLayout>
 </ScrollView>
